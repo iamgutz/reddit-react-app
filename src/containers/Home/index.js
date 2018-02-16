@@ -1,21 +1,38 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { navigateTo } from '../../actions/navigation'
+import _ from 'lodash'
+import { fetchJobs } from '../../actions/jobs'
+import JobsList from '../../components/JobsList'
 
 const Home = props => (
   <div>
-    <h1>Home</h1>
-    <p>Click the button below to navigate to another page</p>
-    <button onClick={() => props.navigateTo('/about')}>Go to About</button>
+    <h1>Jobs available in California</h1>
+    {_.isEmpty(props.jobs) && !props.fetched &&
+      <button onClick={() => props.fetchJobs()}>Load Posts</button>
+    }
+
+    {_.isEmpty(props.jobs) && props.fetched &&
+      <p>Results not found.</p>
+    }
+
+    {!_.isEmpty(props.jobs) &&
+      <JobsList items={props.jobs} />
+    }
   </div>
 )
 
+const mapStateToProps = state => ({
+  jobs: state.jobs.list,
+  fetched: state.jobs.fetched
+})
+
 const mapDispatchToProps = dispatch => bindActionCreators({
-  navigateTo
+  fetchJobs
 }, dispatch)
 
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Home)
