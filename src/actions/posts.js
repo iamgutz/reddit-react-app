@@ -10,7 +10,7 @@ export const fetchPosts = () => {
 
     request({
       method: 'GET',
-      url: 'https://www.reddit.com/r/pics/top.json?limit=2',
+      url: 'https://www.reddit.com/r/movies/top.json?limit=2',
       errorMessage: 'An error occured while processing the request.',
       onSuccess ({ data }) {
         const posts = _.get(data, 'data.children', [])

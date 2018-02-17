@@ -1,21 +1,59 @@
 import styled from 'styled-components'
+import Card, { CardMedia, CardContent } from 'material-ui/Card'
+import Typography from 'material-ui/Typography'
 
-export const JobTitle = styled.h5`
-  color: #666666;
-  font-size: 16px;
-  margin-bottom: 0px;
+export const PostCard = styled(Card)`
+  margin-bottom: 5px;
+`
+export const Thumbnail = styled(CardMedia)`
+  width: 150px;
+  height: 150px;
+  flex: 1 0 auto;
+  flex-basis: 25%;
+  min-width: 112px;
+  max-width: 140px;
+  max-height: 93px;
+  margin-right: 16px;
+`
+export const Header = styled.div`
+  text-align: left;
+  font-size: 9px;
+`
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+`
+export const Details = styled.div``
+export const Content = styled(CardContent)`
+  flex: 3 3 auto;
+  text-align: left;
+`
+export const HeaderCaption = styled.span`
+  display: inline-block !important;
+  color: rgba(0, 0, 0, 0.54);
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.375em;
+`
+export const Separator = styled.span`
+  display: inline-block;
+  position: relative;
+  top: -1px;
+  margin: 0px 5px;
 
-  span {
-    font-style: italic;
+  &:after {
+    content: ' ';
+    display: inline-block;
+    background: #ccccca;
+    width: 4px;
+    height: 4px;
+    border-radius: 50px;
+    margin-top: -1px;
   }
 `
-
-export const JobCompany = styled.p`
-  color: #444;
-  font-size: 13px;
-  margin-top: 0px;
-
-  span {
-    font-style: italic;
-  }
+export const PreviewImage = styled(CardMedia)`
+  width: 100%;
+  padding-top: 67%;
+  background-size: contain !important;
 `
