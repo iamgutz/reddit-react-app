@@ -8,6 +8,19 @@ import PostCardHeader from './PostCardHeader'
 import { PostCard, Container, Thumbnail, Details, Content, PreviewImage } from './styles'
 
 class PostItem extends Component {
+  constructor(){
+    super()
+    this.state = {
+      preview: false
+    }
+  }
+
+  togglePreview () {
+    this.setState({
+      preview: !this.state.preview && true
+    })
+  }
+
   render() {
     const { post } = this.props
 
@@ -17,7 +30,7 @@ class PostItem extends Component {
           {post.data.thumbnail && post.data.thumbnail_height &&
             <Thumbnail
               image={post.data.thumbnail}
-              title="Live from space album cover" />
+              title="Live from space album cover" onClick={() => { this.togglePreview()}} />
           }
 
           <Details>
@@ -31,7 +44,7 @@ class PostItem extends Component {
           </Details>
         </Container>
         <Container>
-          {post.data.preview &&
+          {post.data.preview && this.state.preview &&
             <PreviewImage
               image={decodeUri(post.data.preview.images[0].resolutions[3].url)} />
           }
