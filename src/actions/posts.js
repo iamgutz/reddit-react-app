@@ -1,25 +1,28 @@
+import _ from 'lodash'
 import * as types from '../constants/actionTypes'
 import request from '../utils/request'
 
-export const fetchJobs = () => {
+export const fetchPosts = () => {
   return dispatch => {
     dispatch({
-      type: types.FETCH_JOBS_REQUEST
+      type: types.FETCH_POSTS_REQUEST
     })
 
     request({
       method: 'GET',
-      url: 'https://crossorigin.me/https://jobs.github.com/positions.json?description=web&location=california',
+      url: 'https://www.reddit.com/r/pics/top.json?limit=2',
       errorMessage: 'An error occured while processing the request.',
       onSuccess ({ data }) {
+        const posts = _.get(data, 'data.children', [])
+
         dispatch({
-          type: types.FETCH_JOBS_SUCCESS,
-          payload: data
+          type: types.FETCH_POSTS_SUCCESS,
+          payload: posts
         })
       },
       onFailure () {
         dispatch({
-          type: types.FETCH_JOBS_FAILURE
+          type: types.FETCH_POSTS_FAILURE
         })
       }
     })

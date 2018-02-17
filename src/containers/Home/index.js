@@ -2,33 +2,39 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import _ from 'lodash'
-import { fetchJobs } from '../../actions/jobs'
-import JobsList from '../../components/JobsList'
+import Button from 'material-ui/Button'
+import { fetchPosts } from '../../actions/posts'
+import PostList from '../../components/PostList'
 
 const Home = props => (
   <div>
-    <h1>Jobs available in California</h1>
-    {_.isEmpty(props.jobs) && !props.fetched &&
-      <button onClick={() => props.fetchJobs()}>Load Posts</button>
+    <h1>Top scoring links</h1>
+    {_.isEmpty(props.posts) && !props.fetched &&
+      <Button
+        onClick={() => props.fetchPosts()}
+        variant="raised"
+        color="secondary">
+        Load data
+      </Button>
     }
 
-    {_.isEmpty(props.jobs) && props.fetched &&
+    {_.isEmpty(props.posts) && props.fetched &&
       <p>Results not found.</p>
     }
 
-    {!_.isEmpty(props.jobs) &&
-      <JobsList items={props.jobs} />
+    {!_.isEmpty(props.posts) &&
+      <PostList items={props.posts} />
     }
   </div>
 )
 
 const mapStateToProps = state => ({
-  jobs: state.jobs.list,
-  fetched: state.jobs.fetched
+  posts: state.posts.list,
+  fetched: state.posts.fetched
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchJobs
+  fetchPosts
 }, dispatch)
 
 

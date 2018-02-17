@@ -13,7 +13,6 @@ import Paper from 'material-ui/Paper'
 
 
 import Home from '../Home'
-import Jobs from '../Jobs'
 
 const NoMatch = ({location}) => (
   <div>
@@ -55,7 +54,6 @@ class App extends Component {
               <Paper className={classes.paper}>
                 <Switch>
                   <Route exact path='/' component={Home}></Route>
-                  <Route exact path='/jobs' component={Jobs}></Route>
                   <Route component={NoMatch} />
                 </Switch>
               </Paper>

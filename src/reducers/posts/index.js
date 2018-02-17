@@ -1,5 +1,5 @@
 import createReducer from 'redux-createreducer'
-import { fetchedJobsSuccess } from './handlers'
+import { fetchedPostsSuccess } from './handlers'
 import * as types from '../../constants/actionTypes'
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
 }
 
 const handlers = {
-  [types.FETCH_JOBS_SUCCESS]: fetchedJobsSuccess
+  [types.FETCH_POSTS_SUCCESS]: fetchedPostsSuccess
 }
 
 export default createReducer(initialState, handlers)
