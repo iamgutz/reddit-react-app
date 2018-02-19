@@ -37,6 +37,6 @@ export const selectPost = (postId) => {
       payload: postId
     })
 
-    dispatch(navigateTo('details/hola'))
+    //dispatch(navigateTo('details/hola'))
   }
 }

@@ -3,6 +3,7 @@ import _ from 'lodash'
 import { CardContent, CardMedia } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import { decodeUri } from '../../utils/decoders'
+import { slugString } from '../../utils/formatters'
 
 import PostCardHeader from './PostCardHeader'
 import { PostCard, Container, Thumbnail, Details, Content, PreviewImage } from './styles'
@@ -26,6 +27,7 @@ class PostItem extends Component {
 
   handleOnItemClick = () => {
     this.props.onItemSelect(this.props.post.data.id)
+    this.props.navigateTo(`details/${slugString(this.props.post.data.title)}`)
     //window.location.href = this.props.post.data.url
   }
 
