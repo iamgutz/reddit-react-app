@@ -32,8 +32,8 @@ class PostItem extends Component {
 
   render() {
     const { post, onItemSelect } = this.props
-    const previewSmallest = _.get(post, 'data.preview.images[0].resolutions', []).length - 1
-    const postPreviewUrl = _.get(post, `data.preview.images[0].resolutions[${previewSmallest}].url`)
+    const previewLargest = _.get(post, 'data.preview.images[0].resolutions', []).length - 1
+    const postPreviewUrl = _.get(post, `data.preview.images[0].resolutions[${previewLargest}].url`)
     const protocolRegexp = /http|https/g
     const postThumbnail = post.data.thumbnail && protocolRegexp.test(post.data.thumbnail) && post.data.thumbnail
 

@@ -1,18 +1,57 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
-import { CardContent, CardMedia } from 'material-ui/Card'
+import renderHTML from 'react-render-html'
 import Typography from 'material-ui/Typography'
-import { decodeUri } from '../../utils/decoders'
+import Button from 'material-ui/Button'
+import { decodeUri, decodeHtmlTags } from '../../utils/decoders'
 
-//import PostCardHeader from './PostCardHeader'
-//import { PostCard, Container, Thumbnail, Details, Content, PreviewImage } from './styles'
+import { PostImage } from './styles'
 
-const PostDetails = props => {
-  return (
-    <div>
-      {`r/${props.post.data.subreddit}`}
-    </div>
-  )
+class PostDetails extends Component {
+
+
+  render() {
+    const { props } = this
+    const previewLargest = _.get(props.post, 'data.preview.images[0].resolutions', []).length - 1
+    const postPreviewUrl = decodeUri(_.get(props.post, `data.preview.images[0].resolutions[${previewLargest}].url`))
+    const text = _.get(props.post, 'data.selftext') && decodeHtmlTags(decodeUri(props.post.data.selftext_html))
+
+    return (
+      <div>
+        {props.post &&
+          <div>
+            <Typography variant='caption'>
+              {`r/${props.post.data.subreddit}`}
+            </Typography>
+            <Typography variant='title'>
+              {props.post.data.title}
+            </Typography>
+            <Typography variant='caption'>
+              {`u/${props.post.data.author}`}
+            </Typography>
+            {postPreviewUrl && <PostImage src={postPreviewUrl} />}
+            {text &&
+              <Typography variant='body1' dangerouslySetInnerHTML={{ __html: text }} />
+            }
+          </div>
+        }
+
+        {!props.post &&
+          <div>
+            <Typography variant='subheading'>
+              Sorry, post not found, please go back to home and select another one.
+            </Typography>
+            <Button
+              variant='raised'
+              color='secondary'
+              onClick={() => props.navigateTo('/')}>
+              Go back to home
+            </Button>
+          </div>
+        }
+      </div>
+    )
+  }
 }
 
 export default PostDetails
