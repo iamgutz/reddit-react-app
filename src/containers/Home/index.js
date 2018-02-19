@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import _ from 'lodash'
@@ -7,30 +7,31 @@ import { fetchPosts, selectPost } from '../../actions/posts'
 import { navigateTo } from '../../actions/navigation'
 import PostList from '../../components/PostList'
 
-const Home = props => (
-  <div>
-    <h1>Top scoring links</h1>
-    {_.isEmpty(props.posts) && !props.fetched &&
-      <Button
-        onClick={() => props.fetchPosts()}
-        variant="raised"
-        color="secondary">
-        Load data
-      </Button>
-    }
+class Home extends Component {
+  componentWillMount() {
+    if(_.isEmpty(this.props.posts)) this.props.fetchPosts()
+  }
+  render() {
+    const { props } = this
 
-    {_.isEmpty(props.posts) && props.fetched &&
-      <p>Results not found.</p>
-    }
+    return (
+      <div>
+        <h1>Top scoring links</h1>
 
-    {!_.isEmpty(props.posts) &&
-      <PostList
-        items={props.posts}
-        onPostSelect={props.selectPost}
-        navigateTo={props.navigateTo} />
-    }
-  </div>
-)
+        {_.isEmpty(props.posts) && props.fetched &&
+          <p>Results not found.</p>
+        }
+
+        {!_.isEmpty(props.posts) &&
+          <PostList
+            items={props.posts}
+            onPostSelect={props.selectPost}
+            navigateTo={props.navigateTo} />
+        }
+      </div>
+    )
+  }
+}
 
 const mapStateToProps = state => ({
   posts: state.posts.list,

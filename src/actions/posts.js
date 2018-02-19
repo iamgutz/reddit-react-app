@@ -1,7 +1,6 @@
 import _ from 'lodash'
 import * as types from '../constants/actionTypes'
 import request from '../utils/request'
-import { navigateTo } from './navigation'
 
 export const fetchPosts = () => {
   return dispatch => {
@@ -36,7 +35,5 @@ export const selectPost = (postId) => {
       type: types.SELECT_POST_SUCCESS,
       payload: postId
     })
-
-    //dispatch(navigateTo('details/hola'))
   }
 }

@@ -28,7 +28,6 @@ class PostItem extends Component {
   handleOnItemClick = () => {
     this.props.onItemSelect(this.props.post.data.id)
     this.props.navigateTo(`details/${slugString(this.props.post.data.title)}`)
-    //window.location.href = this.props.post.data.url
   }
 
   render() {
