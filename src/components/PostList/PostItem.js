@@ -32,13 +32,17 @@ class PostItem extends Component {
 
   render() {
     const { post, onItemSelect } = this.props
+    const previewSmallest = _.get(post, 'data.preview.images[0].resolutions', []).length - 1
+    const postPreviewUrl = _.get(post, `data.preview.images[0].resolutions[${previewSmallest}].url`)
+    const protocolRegexp = /http|https/g
+    const postThumbnail = post.data.thumbnail && protocolRegexp.test(post.data.thumbnail) && post.data.thumbnail
 
     return (
       <PostCard>
         <Container>
-          {post.data.thumbnail && post.data.thumbnail_height &&
+          {postThumbnail && post.data.thumbnail_height &&
             <Thumbnail
-              image={post.data.thumbnail}
+              image={postThumbnail}
               title="Live from space album cover" onClick={this.togglePreview} />
           }
 
@@ -54,9 +58,9 @@ class PostItem extends Component {
           </Details>
         </Container>
         <Container>
-          {post.data.preview && this.state.preview &&
+          {postPreviewUrl && this.state.preview &&
             <PreviewImage
-              image={decodeUri(post.data.preview.images[0].resolutions[3].url)} />
+              image={decodeUri(postPreviewUrl)} />
           }
         </Container>
         <div>
