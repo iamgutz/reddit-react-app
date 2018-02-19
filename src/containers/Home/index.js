@@ -3,7 +3,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import Button from 'material-ui/Button'
-import { fetchPosts } from '../../actions/posts'
+import { fetchPosts, selectPost } from '../../actions/posts'
+import { navigateTo } from '../../actions/navigation'
 import PostList from '../../components/PostList'
 
 const Home = props => (
@@ -23,7 +24,10 @@ const Home = props => (
     }
 
     {!_.isEmpty(props.posts) &&
-      <PostList items={props.posts} />
+      <PostList
+        items={props.posts}
+        onPostSelect={props.selectPost}
+        navigateTo={props.navigateTo} />
     }
   </div>
 )
@@ -34,7 +38,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchPosts
+  fetchPosts,
+  selectPost,
+  navigateTo
 }, dispatch)
 
 

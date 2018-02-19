@@ -13,16 +13,24 @@ class PostItem extends Component {
     this.state = {
       preview: false
     }
+
+    this.togglePreview = this.togglePreview.bind(this)
+    this.handleOnItemClick = this.handleOnItemClick.bind(this)
   }
 
-  togglePreview () {
+  togglePreview = () => {
     this.setState({
       preview: !this.state.preview && true
     })
   }
 
+  handleOnItemClick = () => {
+    this.props.onItemSelect(this.props.post.data.id)
+    //window.location.href = this.props.post.data.url
+  }
+
   render() {
-    const { post } = this.props
+    const { post, onItemSelect } = this.props
 
     return (
       <PostCard>
@@ -30,7 +38,7 @@ class PostItem extends Component {
           {post.data.thumbnail && post.data.thumbnail_height &&
             <Thumbnail
               image={post.data.thumbnail}
-              title="Live from space album cover" onClick={() => { this.togglePreview()}} />
+              title="Live from space album cover" onClick={this.togglePreview} />
           }
 
           <Details>
@@ -39,6 +47,7 @@ class PostItem extends Component {
               <Typography
                 variant='subheading'
                 align='left'
+                onClick={this.handleOnItemClick}
                 dangerouslySetInnerHTML={{ __html: post.data.title }} />
             </div>
           </Details>

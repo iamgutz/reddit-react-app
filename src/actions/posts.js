@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import * as types from '../constants/actionTypes'
 import request from '../utils/request'
+import { navigateTo } from './navigation'
 
 export const fetchPosts = () => {
   return dispatch => {
@@ -10,7 +11,7 @@ export const fetchPosts = () => {
 
     request({
       method: 'GET',
-      url: 'https://www.reddit.com/r/movies/top.json?limit=2',
+      url: 'https://www.reddit.com/r/movies/top.json?limit=25',
       errorMessage: 'An error occured while processing the request.',
       onSuccess ({ data }) {
         const posts = _.get(data, 'data.children', [])
@@ -26,5 +27,16 @@ export const fetchPosts = () => {
         })
       }
     })
+  }
+}
+
+export const selectPost = (postId) => {
+  return dispatch => {
+    dispatch({
+      type: types.SELECT_POST_SUCCESS,
+      payload: postId
+    })
+
+    dispatch(navigateTo('details/hola'))
   }
 }
