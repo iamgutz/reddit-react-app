@@ -60,6 +60,11 @@ export const Separator = styled.span`
 `
 export const PreviewImage = styled(CardMedia)`
   width: 100%;
-  padding-top: 67%;
+  padding-top: 50%;
   background-size: contain !important;
+`
+
+export const Footer = styled.div`
+  padding: 0px 16px 8px 16px;
+  text-align: left;
 `

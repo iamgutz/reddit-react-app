@@ -6,7 +6,8 @@ import { decodeUri } from '../../utils/decoders'
 import { slugString } from '../../utils/formatters'
 
 import PostCardHeader from './PostCardHeader'
-import { PostCard, Container, Thumbnail, Details, Content, PreviewImage } from './styles'
+import PostCommentsCount from '../PostCommentsCount'
+import { PostCard, Container, Thumbnail, Details, Content, PreviewImage, Footer } from './styles'
 
 class PostItem extends Component {
   constructor(){
@@ -57,19 +58,17 @@ class PostItem extends Component {
             </div>
           </Details>
         </Container>
-        <Container>
-          {postPreviewUrl && this.state.preview &&
+
+        {postPreviewUrl && this.state.preview &&
+          <Container>
             <PreviewImage
               image={decodeUri(postPreviewUrl)} />
-          }
-        </Container>
-        <div>
-          <Content>
-            <Typography variant='caption' align='left'>
-              {post.data.num_comments}
-            </Typography>
-          </Content>
-        </div>
+          </Container>
+        }
+
+        <Footer>
+          <PostCommentsCount count={post.data.num_comments} />
+        </Footer>
       </PostCard>
     )
   }

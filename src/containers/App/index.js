@@ -9,7 +9,6 @@ import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
 import Grid from 'material-ui/Grid'
-import Paper from 'material-ui/Paper'
 
 
 import Home from '../Home'
@@ -50,15 +49,13 @@ class App extends Component {
           </Toolbar>
         </AppBar>
         <main>
-          <Grid container>
+          <Grid container className={classes.paper}>
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Switch>
-                  <Route exact path='/' component={Home}></Route>
-                  <Route exact path='/details/:slug' component={Details}></Route>
-                  <Route component={NoMatch} />
-                </Switch>
-              </Paper>
+              <Switch>
+                <Route exact path='/' component={Home}></Route>
+                <Route exact path='/details/:slug' component={Details}></Route>
+                <Route component={NoMatch} />
+              </Switch>
             </Grid>
           </Grid>
         </main>
