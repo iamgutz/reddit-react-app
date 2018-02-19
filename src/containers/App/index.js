@@ -7,12 +7,13 @@ import Typography from 'material-ui/Typography'
 import Toolbar from 'material-ui/Toolbar'
 import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
-import MenuIcon from 'material-ui-icons/Menu'
 import Grid from 'material-ui/Grid'
 
 
 import Home from '../Home'
 import Details from '../Details'
+
+import logo from './Reddit_icon.svg'
 
 const NoMatch = ({location}) => (
   <div>
@@ -38,11 +39,9 @@ class App extends Component {
     return (
       <div className={classes.root}>
         <LoadingBar />
-        <AppBar position="static">
+        <AppBar position="sticky" color="default">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
+            <img src={logo} alt="logo" width="36" height="36" />
             <Typography variant="title" color="inherit">
               Reddit React App
             </Typography>

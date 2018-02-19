@@ -7,6 +7,8 @@ import { fetchPosts, fetchMorePosts, selectPost } from '../../actions/posts'
 import { navigateTo } from '../../actions/navigation'
 import PostList from '../../components/PostList'
 
+import { Top } from './styles'
+
 class Home extends Component {
   constructor(){
     super()
@@ -28,7 +30,9 @@ class Home extends Component {
 
     return (
       <div>
-        <h1>Top scoring links</h1>
+        <Top>
+          <h1>{'r/movies'}</h1>
+        </Top>
 
         {_.isEmpty(props.posts) && props.fetched &&
           <p>Results not found.</p>

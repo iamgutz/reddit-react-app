@@ -11,6 +11,10 @@ export const PostTitle = styled(Typography)`
 `
 export const PostCard = styled(Card)`
   padding: 10px;
+
+  iframe {
+    width: 100%;
+  }
 `
 export const PostImage = styled.img`
   width: 100%;
