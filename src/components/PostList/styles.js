@@ -4,6 +4,12 @@ import Typography from 'material-ui/Typography'
 
 export const PostCard = styled(Card)`
   margin-bottom: 5px;
+
+  &.visited {
+    h3 {
+      color: #ccc;
+    }
+  }
 `
 export const Thumbnail = styled(CardMedia)`
   width: 150px;

@@ -26,7 +26,7 @@ class PostItem extends Component {
   }
 
   handleOnItemClick = () => {
-    this.props.onItemSelect(this.props.post.data.id)
+    this.props.onItemSelect(this.props.itemIndex)
     this.props.navigateTo(`details/${slugString(this.props.post.data.title)}`)
   }
 
@@ -38,7 +38,7 @@ class PostItem extends Component {
     const postThumbnail = post.data.thumbnail && protocolRegexp.test(post.data.thumbnail) && post.data.thumbnail
 
     return (
-      <PostCard>
+      <PostCard className={post.data.visited && 'visited'}>
         <Container>
           {postThumbnail && post.data.thumbnail_height &&
             <Thumbnail

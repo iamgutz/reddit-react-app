@@ -29,11 +29,11 @@ export const fetchPosts = () => {
   }
 }
 
-export const selectPost = (postId) => {
+export const selectPost = (itemIndex) => {
   return dispatch => {
     dispatch({
       type: types.SELECT_POST_SUCCESS,
-      payload: postId
+      payload: itemIndex
     })
   }
 }
