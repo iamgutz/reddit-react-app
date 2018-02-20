@@ -14,6 +14,7 @@ import Home from '../Home'
 import Details from '../Details'
 
 import logo from './Reddit_icon.svg'
+import { AppContainer } from './styles'
 
 const NoMatch = ({location}) => (
   <div>
@@ -21,23 +22,12 @@ const NoMatch = ({location}) => (
   </div>
 )
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
-  paper: {
-    padding: 16,
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  },
-})
-
-class App extends Component {
+export class App extends Component {
   render() {
     const { classes } = this.props
 
     return (
-      <div className={classes.root}>
+      <AppContainer>
         <LoadingBar />
         <AppBar position="sticky" color="default">
           <Toolbar>
@@ -48,7 +38,7 @@ class App extends Component {
           </Toolbar>
         </AppBar>
         <main>
-          <Grid container className={classes.paper}>
+          <Grid container className='paper'>
             <Grid item xs={12}>
               <Switch>
                 <Route exact path='/' component={Home}></Route>
@@ -58,9 +48,9 @@ class App extends Component {
             </Grid>
           </Grid>
         </main>
-      </div>
+      </AppContainer>
     );
   }
 }
 
-export default withStyles(styles)(App);
+export default withStyles()(App);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
-import renderHTML from 'react-render-html'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 
