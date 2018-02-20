@@ -23,7 +23,7 @@ export const Thumbnail = styled(CardMedia)`
 `
 export const Header = styled.div`
   text-align: left;
-  font-size: 9px;
+  font-size: 11px;
 `
 export const Container = styled.div`
   display: flex;

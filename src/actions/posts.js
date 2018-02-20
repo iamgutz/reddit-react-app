@@ -11,7 +11,8 @@ export const fetchPosts = () => {
     request({
       method: 'GET',
       url: 'https://www.reddit.com/r/movies/top.json',
-      errorMessage: 'An error occured while processing the request.',
+      errorMessage: 'An error occured while fetching initial posts.',
+      successMessage: 'Posts loaded!',
       onSuccess ({ data }) {
         const posts = _.get(data, 'data.children', [])
 
@@ -37,7 +38,8 @@ export const fetchMorePosts = (nextPage) => {
     request({
       method: 'GET',
       url: `https://www.reddit.com/r/movies/top.json?after=${nextPage}`,
-      errorMessage: 'An error occured while processing the request.',
+      errorMessage: 'An error occured while fetching more posts.',
+      successMessage: 'Loaded more posts!',
       onSuccess ({ data }) {
         const posts = _.get(data, 'data.children', [])
 

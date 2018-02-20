@@ -1,8 +1,10 @@
 import React from 'react'
+import moment from 'moment'
 import { Separator, HeaderCaption, Header } from './styles'
 
 const PostCardHeader = props => {
   const { data } = props
+  const timestamp = moment(moment.unix(data.created_utc).utc().format()).fromNow()
 
   return (
     <Header>
@@ -15,7 +17,7 @@ const PostCardHeader = props => {
       </HeaderCaption>
       <Separator />
       <HeaderCaption variant='caption' align='left'>
-        {`${data.created}h`}
+        {timestamp}
       </HeaderCaption>
       <Separator />
       <HeaderCaption variant='caption' align='left'>
