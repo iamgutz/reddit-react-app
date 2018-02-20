@@ -7,7 +7,9 @@ import { slugString } from '../../utils/formatters'
 
 import PostCardHeader from './PostCardHeader'
 import PostCommentsCount from '../PostCommentsCount'
-import { PostCard, Container, Thumbnail, Details, Content, PreviewImage, Footer } from './styles'
+import {
+  PostCard, Container, Thumbnail, Details, Content, PreviewImage, Footer, PostItemTitle
+} from './styles'
 
 class PostItem extends Component {
   constructor(){
@@ -50,7 +52,7 @@ class PostItem extends Component {
           <Details>
             <PostCardHeader data={post.data} />
             <div>
-              <Typography
+              <PostItemTitle
                 variant='subheading'
                 align='left'
                 onClick={this.handleOnItemClick}

@@ -20,6 +20,7 @@ export const Thumbnail = styled(CardMedia)`
   max-width: 140px;
   max-height: 93px;
   margin-right: 16px;
+  cursor: pointer;
 `
 export const Header = styled.div`
   text-align: left;
@@ -67,4 +68,8 @@ export const PreviewImage = styled(CardMedia)`
 export const Footer = styled.div`
   padding: 0px 16px 8px 16px;
   text-align: left;
+`
+
+export const PostItemTitle = styled(Typography)`
+  cursor: pointer;
 `

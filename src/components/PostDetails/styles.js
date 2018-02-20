@@ -11,6 +11,7 @@ export const PostTitle = styled(Typography)`
 `
 export const PostCard = styled(Card)`
   padding: 10px;
+  max-width: 600px;
 
   iframe {
     width: 100%;
@@ -22,6 +23,7 @@ export const PostImage = styled.img`
 export const PostSubreddit = styled(Typography)`
   color: #0079d3 !important;
   padding: 8px 0px;
+  cursor: pointer;
 `
 export const PostAuthor = styled(Typography)`
   padding: 8px 0px;
