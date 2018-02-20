@@ -26,7 +26,9 @@ class PostDetails extends Component {
         {props.post &&
           <PostContent>
             <PostSubreddit variant='caption'>
-              <Link to='/'>{`r/${props.post.data.subreddit}`}</Link>
+              <span onClick={() => { props.navigateBack() }}>
+                {`r/${props.post.data.subreddit}`}
+              </span>
             </PostSubreddit>
 
 

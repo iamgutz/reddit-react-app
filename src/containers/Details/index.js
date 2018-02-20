@@ -3,11 +3,14 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import Button from 'material-ui/Button'
-import { navigateTo } from '../../actions/navigation'
+import { navigateTo, navigateBack } from '../../actions/navigation'
 import PostDetails from '../../components/PostDetails'
 
 const Details = props => (
-  <PostDetails post={props.selectedPost} navigateTo={props.navigateTo} />
+  <PostDetails
+    post={props.selectedPost}
+    navigateTo={props.navigateTo}
+    navigateBack={props.navigateBack} />
 )
 
 const mapStateToProps = state => ({
@@ -15,7 +18,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  navigateTo
+  navigateTo,
+  navigateBack
 }, dispatch)
 
 export default connect(
