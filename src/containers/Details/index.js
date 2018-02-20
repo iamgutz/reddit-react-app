@@ -10,7 +10,8 @@ const Details = props => (
   <PostDetails
     post={props.selectedPost}
     navigateTo={props.navigateTo}
-    navigateBack={props.navigateBack} />
+    navigateBack={props.navigateBack}
+  />
 )
 
 const mapStateToProps = state => ({

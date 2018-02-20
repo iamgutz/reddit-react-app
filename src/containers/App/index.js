@@ -16,7 +16,7 @@ import Details from '../Details'
 import logo from './Reddit_icon.svg'
 import { AppContainer } from './styles'
 
-const NoMatch = ({location}) => (
+const NoMatch = ({ location }) => (
   <div>
     <h1>404. Page not found.</h1>
   </div>
@@ -29,10 +29,10 @@ export class App extends Component {
     return (
       <AppContainer>
         <LoadingBar />
-        <AppBar position="sticky" color="default">
+        <AppBar position='sticky' color='default'>
           <Toolbar>
-            <img src={logo} alt="logo" width="36" height="36" />
-            <Typography variant="title" color="inherit">
+            <img src={logo} alt='logo' width='36' height='36' />
+            <Typography variant='title' color='inherit'>
               Reddit React App
             </Typography>
           </Toolbar>
@@ -41,8 +41,8 @@ export class App extends Component {
           <Grid container className='paper'>
             <Grid item xs={12}>
               <Switch>
-                <Route exact path='/' component={Home}></Route>
-                <Route exact path='/details/:slug' component={Details}></Route>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/details/:slug' component={Details} />
                 <Route component={NoMatch} />
               </Switch>
             </Grid>

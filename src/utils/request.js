@@ -10,7 +10,7 @@ const request = async (options) => {
   const defaults = {} // if default parameters need to be added
 
   if (!options.method || !options.url) {
-    const error = { message: 'method and url are required parameters, please provide.'}
+    const error = { message: 'method and url are required parameters, please provide.' }
     if (_.isFunction(onFailure)) {
       onFailure(error)
     }
@@ -20,7 +20,7 @@ const request = async (options) => {
     return error
   }
 
-  const requestParams = Object.assign({}, defaults, {...reqParams})
+  const requestParams = Object.assign({}, defaults, { ...reqParams })
 
   if (_.isFunction(onRequest)) onRequest()
 
@@ -32,7 +32,7 @@ const request = async (options) => {
     if (_.isFunction(onSuccess)) onSuccess(result)
 
     return result
-  } catch(err) {
+  } catch (err) {
     toastr.error(errorMessage || err.message)
 
     if (_.isFunction(onFailure)) onFailure(err)

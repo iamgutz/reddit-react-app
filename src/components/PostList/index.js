@@ -5,19 +5,22 @@ import debounce from '../../utils/debounce'
 
 import PostItem from './PostItem'
 
-const PostList = props => {
+const PostList = (props) => {
   const debouncedLoadMorePosts = debounce(props.loadMorePosts, 500)
 
   return (
     <InfiniteScroll
       hasMore={props.morePosts}
-      loadMore={debouncedLoadMorePosts}>
+      loadMore={debouncedLoadMorePosts}
+    >
       {_.map(props.items, (post, i) => (
-        <PostItem post={post}
+        <PostItem
+          post={post}
           key={post.data.id}
           itemIndex={i}
           onItemSelect={props.onPostSelect}
-          navigateTo={props.navigateTo} />
+          navigateTo={props.navigateTo}
+        />
       ))}
     </InfiniteScroll>
   )
